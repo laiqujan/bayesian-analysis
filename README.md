@@ -6,4 +6,23 @@
 **Aim:** This project explores the causal effects of different factors/variables on bug report resolutions (i.e., valid (1) or invalid (0)), such as submitter validity rate, total bug reports submitted, testing level where bug reports are caught and bug report quality or completeness.
  
 ## Dataset 
-We will use open-source and closed-source data sets.
+We will use open-source (OSS) and closed-source (CSS) data sets. The open data source is made available by (Fan et al., [2018] (https://doi.org/10.1109/TSE.2018.2864217)). I have cleaned data sets using python script.
+### Featuers
+We have the follwing featuers:
+1. **Submitter Validity Rate (SVR):** SVR is a ratio of valid to total bug reports of each submitter.
+2. **Submitter Bug Count (SBC):** SBC is the total bug count of each submitter.
+3. **Caught Where (CW):** CW is a testing level or place where a bug is detected.
+4. **Bug Completness (BC):** CW is the bug completeness weight that indicates the quality of the submitted bug report. It is calculated from textual descriptions: (a) if the bug report has steps to reproduce, (b) if the bug report has stack traces, (c) if the bug report has test case(s), (d) if the bug report has any screenshot or attachment, (e) if the bug report has any code, and (f) if the bug report has patch.
+5. **Resolution:** The resolution label of each bug report, i.e., valid or invalid.
+
+<pre><code>
+#Loading Data
+d<-read.csv("../css.csv")
+str(d)
+'data.frame':	N obs. of  5 variables:
+ $ SVR       : num  1 1 1 1 0.833 ...
+ $ SBC       : int  4 4 4 4 6 84 57 135 33 48 ...
+ $ CW        : int  1 1 1 1 1 2 1 2 1 1 ...
+ $ BC        : int  2 1 2 1 1 1 2 1 1 4 ...
+ $ Resolution: int  1 1 1 1 1 0 1 1 1 1 ...
+</code> </pre>
