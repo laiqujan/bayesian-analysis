@@ -69,7 +69,7 @@ dens(p, adj=0.1)
 
 </code></pre>
 
-![Prior Check -1](Images/m1.0 prior check.png)
+![Prior Check -1](/images/m1.0-prior-check.png)
 
 # Models
 
