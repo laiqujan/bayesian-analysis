@@ -30,10 +30,18 @@ str(d)
 </code> </pre>
 
 # Likelihoods 
-The outcome variable **Resolution** takes 0 or 1, and for this type of data, **Binomial Distribution** with special case (1/0), aka **Bernoulli Distribution (1,p)**, is used.
+The outcome variable **Resolution** takes 0 or 1, and for this type of data, **Binomial Distribution** with special case (1/0), also defined with **Bernoulli Distribution**, is used.
 <pre><code>y~ binomial ( n , p ), with n=1 y~ binomial ( 1 , p ) </code></pre>
 
 **Logistic Regression:** When data is organized into singular-trial cases, i.e., the outcome is 0 or 1. We will use the logit link function,i.e., logit(p).
-
+<pre><code>
+        Resolution ~ dbinom( 1 , p ) ,
+        logit(p) <- a[CW] + b[BC]+ VR*SVR + Count*SBC*,
+        a[CW] ~ to be determined,
+        b[BC] ~ to be determined,
+        VR ~ to be determined,
+        Count ~ to be determined
+ </code></pre>
 # Priors
+
 # Models
