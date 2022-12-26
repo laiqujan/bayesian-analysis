@@ -45,9 +45,18 @@ Precisely, our model, according to our aim stated above:
  </code></pre>
  
 # Priors
+We need to determine the priors for our predictor variables of the model. We will start with a simple intercept model using binomial distribution and do prior checks.
 
+<pre><code>
+m1.0 <- quap(
+  alist(
+    Resolution ~ dbinom( 1 , p ) ,
+    logit(p) <- a,
+    a ~ dnorm( 0 , 10 )
+  ) , data=d )
+ </code></pre>
+ 
 # Models
-
 
 ### Material Used
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
