@@ -57,7 +57,7 @@ m1.0 <- quap(
  </code></pre>
  Now Let's sample prior and inspect what the model thinks before seeing data.
 <pre><code>
- #get prior samples
+#get prior samples
 prior <- extract.prior(m1.0, 1e4)
 #convert to logistic
 p <- inv_logit(prior$a)
@@ -68,6 +68,9 @@ dens(p, adj=0.1)
 #Let's model with something that makes sense dnorm(0,1)
 
 </code></pre>
+
+![Prior Check -1](Images/m1.0 prior check.png)
+
 # Models
 
 ### Material Used
