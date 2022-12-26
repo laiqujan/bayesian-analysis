@@ -62,7 +62,7 @@ prior <- extract.prior(m1.0, 1e4)
 #convert to logistic
 p <- inv_logit(prior$a)
 #plot
-dens(p, adj=0.1)
+dens(p, adj=0.1, main = 'Prior: dnorm(0,10)')
 
 #Not a good prior model thinks that either event always happens or not even before it sees the data
 #Let's model with something that makes sense dnorm(0,1)
