@@ -8,8 +8,8 @@
  
 ## Dataset 
 We will use open-source (OSS) and closed-source (CSS) data sets. The open data source is made available by (Fan et al., [2018] (https://doi.org/10.1109/TSE.2018.2864217)). I have cleaned data sets using python script.
-### Featuers
-We have the follwing featuers:
+### Variables
+We have the follwing variables:
 1. **Submitter Validity Rate (SVR):** SVR is a ratio of valid to total bug reports of each submitter.
 2. **Submitter Bug Count (SBC):** SBC is the total bug count of each submitter.
 3. **Caught Where (CW):** CW is a testing level or place where a bug is detected.
@@ -28,11 +28,9 @@ str(d)
  $ BC        : int  2 1 2 1 1 1 2 1 1 4 ...
  $ Resolution: int  1 1 1 1 1 0 1 1 1 1 ...
 </code> </pre>
-Description of each data type, i.e., type or range of values.
 
-# Distribution Type: 
+# Likelihoods: 
 Bionomial Distribution sepcial case (1/0), aka Bernoulli Distribution (1,p).
 
-# Model Design
-## Prior Checks
-## Posterior Checks
+# Priors
+# Models
