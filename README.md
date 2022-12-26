@@ -34,7 +34,7 @@ The outcome variable **Resolution** takes 0 or 1, and for this type of data, **B
 <pre><code>y~ binomial ( n , p ), with n=1 y~ binomial ( 1 , p ) </code></pre>
 
 **Logistic Regression:** When data is organized into singular-trial cases, i.e., the outcome is 0 or 1. We will use the logit link function,i.e., logit(p).
-Precisely, our model, according to our aim stated above:
+Precisely, our model, according to our aim stated above, looks like this:
 <pre><code>
   Resolution ~ dbinom( 1 , p ) , y~ binomial ( 1 , p )
   logit(p) <- a[CW] + b[BC]+ VR*SVR + Count*SBC*
@@ -46,8 +46,8 @@ Precisely, our model, according to our aim stated above:
  
 # Priors
 We need to determine the priors for our predictor variables of the model. We will start with a simple intercept model using binomial distribution and do prior checks.
-
 <pre><code>
+#Let's use the flat prior, setting  a ~ dnorm( 0 , 10 )
 m1.0 <- quap(
   alist(
     Resolution ~ dbinom( 1 , p ) ,
@@ -55,7 +55,19 @@ m1.0 <- quap(
     a ~ dnorm( 0 , 10 )
   ) , data=d )
  </code></pre>
- 
+ Now Let's sample prior and inspect what the model thinks before seeing data.
+<pre><code>
+ #get prior samples
+prior <- extract.prior(m1.0, 1e4)
+#convert to logistic
+p <- inv_logit(prior$a)
+#plot
+dens(p, adj=0.1)
+
+#Not a good prior model thinks that either event always happens or not even before it sees the data
+#Let's model with something that makes sense dnorm(0,1)
+
+</code></pre>
 # Models
 
 ### Material Used
