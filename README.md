@@ -29,8 +29,6 @@ str(d)
  $ Resolution: int  1 1 1 1 1 0 1 1 1 1 ...
 </code> </pre>
 Description of each data type, i.e., type or range of values.
-# Descriptive Statistics 
-Some stat...
 
 # Distribution Type: 
 Bionomial Distribution sepcial case (1/0), aka Bernoulli Distribution (1,p).
@@ -38,7 +36,3 @@ Bionomial Distribution sepcial case (1/0), aka Bernoulli Distribution (1,p).
 # Model Design
 ## Prior Checks
 ## Posterior Checks
-
-
-
-
