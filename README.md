@@ -49,6 +49,6 @@ Precisely, our model, according to our aim stated above:
 # Models
 
 
-### Material for help
+### Material Used
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
 2. https://www.youtube.com/@rmcelreath
