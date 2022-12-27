@@ -63,7 +63,7 @@ p <- inv_logit(prior$a)
 #plot
 dens(p, adj=0.1, main = 'Prior: dnorm(0,10)')
 </code></pre>
-As shown in below figure, the chosen prior is not good; the model thinks that either event always happens or not even before it sees the data
+As shown in the figure below, the chosen prior is not good; the model assumes that either event always happens or never happens before it sees the data.
 ![Prior Check -1](/images/m1.0-prior-check.png)
 
 #Let's model with something that makes sense dnorm(0,1)
@@ -151,14 +151,24 @@ b[5]   0.05 0.50 -0.73  0.84  2955     1
 VR     1.09 0.06  0.99  1.19  2196     1
 Count -0.12 0.06 -0.21 -0.03  2155     1
 </code></pre>
+
 Let's extract posteriors and plot:
+
+Plot cw - caught where place or testing level where bug was detected 
 <code><pre>
 post <- extract.samples(m1.3)
-post_a <- inv_logit(post$a)
-plot( precis( as.data.frame(post_a) ) , xlim=c(0,1) )
-
+post_a <- inv_logit( post$a)
+plot( precis( as.data.frame(post_a) ))
 </code></pre>
+![Prior Check -2](/images/precis-plot-for-cw.png)
 
+Plot bug completeness quality - treatments from 1-6 
+<code><pre>
+post <- extract.samples(m1.3)
+post_b <- inv_logit( post$b)
+plot( precis( as.data.frame(post_b) ))
+</code></pre>
+![Prior Check -2](/images/precis-plot-for-bc.png)
 ### Material Used
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
 2. https://www.youtube.com/@rmcelreath
