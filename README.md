@@ -11,12 +11,16 @@ We will use open-source (OSS) and closed-source (CSS) data sets. The open data s
 ### Variables
 We have the follwing variables:
 1. **Submitter Validity Rate (SVR):** SVR is a ratio of valid to total bug reports of each submitter. 
+
    **Rationale:** This variale plays important role in determing the validity of a bug report....
 3. **Submitter Bug Count (SBC):** SBC is the total bug count of each submitter.
+
    **Rationale:** Likewise, people with more bug count likely to valid bug reports...
 4. **Caught Where (CW):** CW is a testing level or place where a bug is detected. 
+
    **Rationale:** This variable is used to analyze if testing level have any effect on validity of a bug report, it might the case that a particualr testing level is poor.... 
 5. **Bug Completness (BC):** CW is the bug completeness weight that indicates the quality of the submitted bug report. It is calculated from textual descriptions: (a) if the bug report has steps to reproduce, (b) if the bug report has stack traces, (c) if the bug report has test case(s), (d) if the bug report has any screenshot or attachment, (e) if the bug report has any code, and (f) if the bug report has patch. 
+
   **Rationale:** Bug completenes could be key for valid bug reports...
 6. **Resolution:** The resolution label of each bug report, i.e., valid or invalid.
 
@@ -171,6 +175,7 @@ post_a <- inv_logit( post$a)
 plot( precis( as.data.frame(post_a) ))
 </code></pre>
 ![Prior Check -2](/images/precis-plot-for-cw.png)
+
 In figure, we can see xyz level tends to produce valid bug reports likewise, tt level produce invalid bug reports...
 Plot bug completeness quality - treatments from 1-6
 <pre><code>
@@ -179,6 +184,7 @@ post_b <- inv_logit( post$b)
 plot( precis( as.data.frame(post_b) ))
 </code></pre>
 ![Prior Check -2](/images/precis-plot-for-bc.png)
+
 In figure, we can see bug completnes do not show positive impact...this could be ...issue with the way we calucluate the bug quality. however, in reality it should be cause for valid bug reports. However, we will see what happens with closed source data.
 
 # Sanity check of the posterior
