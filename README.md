@@ -1,4 +1,3 @@
-[TOC]
 # Bayesian Data Analysis of Invalid Bug Reports
 ## Problem
 **Case:** In large-scale software development, many bug reports are submitted daily. However, not all of the submitted bug reports describe actual deviations in the system behavior, i.e., they are invalid. Invalid bug reports cost resources and time and make prioritization of valid bug reports difficult 
