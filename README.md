@@ -154,16 +154,16 @@ Count -0.12 0.06 -0.21 -0.03  2155     1
 
 Let's extract posteriors and plot:
 
-Plot cw - caught where place or testing level where bug was detected 
-<code><pre>
+Plot cw - caught where place or testing level where bug was detected
+<pre><code>
 post <- extract.samples(m1.3)
 post_a <- inv_logit( post$a)
 plot( precis( as.data.frame(post_a) ))
 </code></pre>
 ![Prior Check -2](/images/precis-plot-for-cw.png)
 
-Plot bug completeness quality - treatments from 1-6 
-<code><pre>
+Plot bug completeness quality - treatments from 1-6
+<pre><code>
 post <- extract.samples(m1.3)
 post_b <- inv_logit( post$b)
 plot( precis( as.data.frame(post_b) ))
