@@ -111,7 +111,8 @@ m1.3 <- ulam(
   ) , data=dat_list , chains=4 , log_lik=TRUE)
 </code></pre>
 
-Posterior Results:
+## Posterior Results:
+Check diagnostics.
 <pre><code>
 precis( m1.3 , depth=2 )
        mean   sd  5.5% 94.5% n_eff Rhat4
@@ -169,6 +170,10 @@ post_b <- inv_logit( post$b)
 plot( precis( as.data.frame(post_b) ))
 </code></pre>
 ![Prior Check -2](/images/precis-plot-for-bc.png)
+
+# Sanity check of the posterior
+We will use builtin function postcheck for sanity check.
+
 ### Material Used
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
 2. https://www.youtube.com/@rmcelreath
