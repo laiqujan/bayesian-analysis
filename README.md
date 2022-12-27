@@ -63,11 +63,9 @@ prior <- extract.prior(m1.0, 1e4)
 p <- inv_logit(prior$a)
 #plot
 dens(p, adj=0.1, main = 'Prior: dnorm(0,10)')
-
-#As shown in below figure, the chosen prior is not good; the model thinks that either event always happens or not even before it sees the data
-
 </code></pre>
 
+As shown in below figure, the chosen prior is not good; the model thinks that either event always happens or not even before it sees the data
 ![Prior Check -1](/images/m1.0-prior-check.png)
 
 #Let's model with something that makes sense dnorm(0,1)
@@ -86,8 +84,9 @@ p <- inv_logit(prior$a)
 #plot
 dens(p, adj=0.1,main = 'Prior: dnorm(0,1)')
 </code></pre>
+
+Seems better for binomial intercept - dnorm(0,1). We will use that for upcoming models. We will add the remaining predictors to the model. Instead of **quap**, we will turn to our new friend **Hamiltonian Monte Carlo** to approximate the posterior.
 ![Prior Check -2](/images/m1.1-prior-check.png)
-Seems better for binomial intercept - dnorm(0,1). We will use that for upcoming models.
 # Models
 
 ### Material Used
