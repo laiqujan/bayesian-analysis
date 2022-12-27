@@ -30,7 +30,7 @@ str(d)
 </code> </pre>
 
 # Likelihoods 
-The outcome variable **Resolution** takes 0 or 1, and for this type of data, **Binomial Distribution** with special case (1/0), also defined with **Bernoulli Distribution**, is used.
+The outcome variable **Resolution** takes 0 or 1, and for this type of data, **Binomial Distribution** with special case (1/0) is used, also defined as a **Bernoulli Distribution**.
 <pre><code>y~ binomial ( n , p ), with n=1 y~ binomial ( 1 , p ) </code></pre>
 
 **Logistic Regression:** When data is organized into singular-trial cases, i.e., the outcome is 0 or 1. We will use the logit link function,i.e., logit(p).
@@ -64,13 +64,30 @@ p <- inv_logit(prior$a)
 #plot
 dens(p, adj=0.1, main = 'Prior: dnorm(0,10)')
 
-#Not a good prior model thinks that either event always happens or not even before it sees the data
-#Let's model with something that makes sense dnorm(0,1)
+#As shown in below figure, the chosen prior is not good; the model thinks that either event always happens or not even before it sees the data
 
 </code></pre>
 
 ![Prior Check -1](/images/m1.0-prior-check.png)
 
+#Let's model with something that makes sense dnorm(0,1)
+
+<pre><code>
+ m1.1 <- quap(
+  alist(
+    Resolution ~ dbinom( 1 , p ) ,
+    logit(p) <- a,
+    a ~ dnorm( 0 , 1)
+  ) , data=d )
+#get prior samples
+prior <- extract.prior(m1.1, 1e4)
+#convert to logistic
+p <- inv_logit(prior$a)
+#plot
+dens(p, adj=0.1,main = 'Prior: dnorm(0,1)')
+</code></pre>
+![Prior Check -2](/images/m1.1-prior-check.png)
+Seems better for binomial intercept - dnorm(0,1). We will use that for upcoming models.
 # Models
 
 ### Material Used
