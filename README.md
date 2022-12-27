@@ -188,8 +188,13 @@ plot( precis( as.data.frame(post_b) ))
 In figure, we can see bug completnes do not show positive impact...this could be ...issue with the way we calucluate the bug quality. however, in reality it should be cause for valid bug reports. However, we will see what happens with closed source data.
 
 # Sanity check of the posterior
-We will use builtin function **postcheck** for sanity check.
+We will use the built-in function **postcheck** for a sanity check.
 
+<pre><code>
+#Sanity check of the posterior
+postcheck(m1.3, window = 20)
+</code></pre>
 ### Material Used
+
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
 2. https://www.youtube.com/@rmcelreath
