@@ -33,8 +33,8 @@ str(d)
  $ BC        : int  2 1 2 1 1 1 2 1 1 4 ...
  $ Resolution: int  1 1 1 1 1 0 1 1 1 1 ...
 </code> </pre>
-SVR and SBC are numerical variables. SVR range is from 0 to 1, showing the percentage/ratio validity rate. However, SBC is a positive integer count, i.e., N > 0.
-CW is a nominal or categorical variable representing the testing level or phase where a bug was detected. BC is weighted from 1 to 6, 1 is the default for each bug report, and weight is added +1 for each factor present in a bug report; see the above description of BC.
+SVR and SBC are numerical variables. SVR range is from 0 to 1, showing the percentage/ratio validity rate. However, SBC is a positive integer count, i.e., N >= 0.
+CW is a nominal or categorical variable representing the testing level or phase where a bug was detected. BC is weighted from 1 to 6, 1 is a default value for each bug report, and weight is added +1 for each factor present in a bug report; see the above description of BC.
 
 # Likelihoods 
 The outcome variable **Resolution** takes 0 or 1, and for this type of data, **Binomial Distribution** with special case (1/0) is used, also defined as a **Bernoulli Distribution**.
@@ -92,7 +92,6 @@ Seems better for binomial intercept - dnorm(0,1). We will use that for upcoming 
 ![Prior Check -2](/images/m1.1-prior-check.png)
 # Models
 Let's prepare our data list:
-
 <pre><code>
 #We will first standardize SBC and SVR.
 d$SBC<-standardize(d$SBC)
