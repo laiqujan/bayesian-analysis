@@ -194,6 +194,7 @@ We will use the built-in function **postcheck** for a sanity check.
 #Sanity check of the posterior
 postcheck(m1.3, window = 20)
 </code></pre>
+
 ### Material Used
 
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
