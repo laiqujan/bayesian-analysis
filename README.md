@@ -10,19 +10,17 @@
 We will use open-source (OSS) and closed-source (CSS) data sets. The open data source is made available by (Fan et al., [2018] (https://doi.org/10.1109/TSE.2018.2864217)). I have cleaned data sets using python script.
 ### Variables
 We have the follwing variables:
-1. **Submitter Validity Rate (SVR):** SVR is a ratio of valid to total bug reports of each submitter. 
+1. **Submitter Validity Rate (SVR):** SVR is a ratio of valid to total bug reports of each submitter. People with a high validity rate are likely to submit valid bug reports. Thus, **SVR** directly influences the **Resolution**, i.e., valid or invalid, **SVR**&#8594;**Resolution**.
 
-   **Rationale:** This variale plays important role in determing the validity of a bug report....
-3. **Submitter Bug Count (SBC):** SBC is the total bug count of each submitter.
+2. **Submitter Bug Count (SBC):** SBC is the total bug count of each submitter. People who have submitted more bug reports are considered experienced, and experience directly influences the **Resolution**, **SBC**&#8594;**Resolution**, i.e., submitters with more bug count will likely submit valid bug reports. 
 
-   **Rationale:** Likewise, people with more bug count likely to valid bug reports...
-4. **Caught Where (CW):** CW is a testing level or place where a bug is detected. 
+3. **Caught Where (CW)**: CW is a testing level or place where a bug is detected/caught. This variable is used to analyze if the testing level affects the validity of a bug report. A particular testing level may be poor, or the phase where the bug was detected does something wrong. Thus, invalid bug reports are submitted by them.
 
-   **Rationale:** This variable is used to analyze if testing level have any effect on validity of a bug report, it might the case that a particualr testing level is poor.... 
-5. **Bug Completness (BC):** CW is the bug completeness weight that indicates the quality of the submitted bug report. It is calculated from textual descriptions: (a) if the bug report has steps to reproduce, (b) if the bug report has stack traces, (c) if the bug report has test case(s), (d) if the bug report has any screenshot or attachment, (e) if the bug report has any code, and (f) if the bug report has patch. 
+4. **Bug Completness (BC):** CW is the bug completeness weight that indicates the quality of the submitted bug report. It is calculated from textual descriptions: (a) if the bug report has steps to reproduce, (b) if the bug report has stack traces, (c) if the bug report has test case(s), (d) if the bug report has any screenshot or attachment, (e) if the bug report has any code, and (f) if the bug report has patch. 
 
-  **Rationale:** Bug completenes could be key for valid bug reports...
-6. **Resolution:** The resolution label of each bug report, i.e., valid or invalid.
+In reality, bug completeness could help distinguish valid or invalid bug reports. However, it may not be possible to reveal the relationship by calculating the factors mentioned earlier from the bug report. As I said, in reality, it should, but people often do not follow the bug report guidelines. Thus it is hard to distinguish valid or invalid bug reports based on these factors in the text. Nevertheless, we will see how it performs.
+
+5. **Resolution:** The resolution label of each bug report, i.e., valid or invalid. This is our outcome and dependent variable influenced by the rest.
 
 # CSS Data
 <pre><code>
