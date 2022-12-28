@@ -158,11 +158,18 @@ b[5]   0.05 0.50 -0.73  0.84  2955     1
 VR     1.09 0.06  0.99  1.19  2196     1
 Count -0.12 0.06 -0.21 -0.03  2155     1
 </code></pre>
-The values of n_eff and Rhat seems okay. Lets check Trankplots and Traceplots.
+
+The values of n_eff and Rhat seem okay. Let's check Trankplots and Traceplots.
+
+<pre><code>
 #trankplots
 trankplot(m1.3)
+
+</code></pre>
+<pre><code>
 #traceplots
 traceplot(1.3)
+</code></pre>
 
 Let's extract posteriors and plot:
 
