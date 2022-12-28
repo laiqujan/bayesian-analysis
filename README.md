@@ -173,7 +173,8 @@ traceplot(1.3)
 
 Let's extract posteriors and plot:
 
-Plot cw - caught where place or testing level where bug was detected
+Plot CW - caught where is a place or testing level where a bug was detected.
+
 <pre><code>
 post <- extract.samples(m1.3)
 post_a <- inv_logit( post$a)
@@ -181,8 +182,9 @@ plot( precis( as.data.frame(post_a) ))
 </code></pre>
 ![Prior Check -2](/images/precis-plot-for-cw.png)
 
-In figure, we can see xyz level tends to produce valid bug reports likewise, tt level produce invalid bug reports...
-Plot bug completeness quality - treatments from 1-6
+In the Figure, we can see that XYZ level tends to produce valid bug reports. Likewise, the TT level produces invalid bug reports.
+
+Let's plot BC - bug completeness/quality.
 <pre><code>
 post <- extract.samples(m1.3)
 post_b <- inv_logit( post$b)
@@ -190,7 +192,7 @@ plot( precis( as.data.frame(post_b) ))
 </code></pre>
 ![Prior Check -2](/images/precis-plot-for-bc.png)
 
-In figure, we can see bug completnes do not show positive impact...this could be ...issue with the way we calucluate the bug quality. however, in reality it should be cause for valid bug reports. However, we will see what happens with closed source data.
+In the figure, we can see that bug completeness results are opposite to what we were expecting. The default treatment V1 means no factor was found in the bug report, but the results favor valid instead of invalid bug reports. V1 to V4 results seem okay. As I said in this start, it may not be possible to reveal the relationship by calculating the factors mentioned earlier from the bug report.
 
 # Sanity check of the posterior
 We will use the built-in function **postcheck** for a sanity check.
