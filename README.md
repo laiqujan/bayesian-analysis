@@ -36,7 +36,7 @@ str(d)
 SVR and SBC are numerical variables. SVR range is from 0 to 1, showing the percentage/ratio validity rate. However, SBC is a positive integer count, i.e., N >= 0.
 CW is a nominal or categorical variable representing the testing level or phase where a bug was detected. BC is weighted from 1 to 6, 1 is a default value for each bug report, and weight is added +1 for each factor present in a bug report; see the above description of BC.
 
-# Likelihoods 
+## Likelihoods 
 The outcome variable **Resolution** takes 0 or 1, and for this type of data, **Binomial Distribution** with special case (1/0) is used, also defined as a **Bernoulli Distribution**.
 <pre><code>y~ binomial ( n , p ), with n=1 y~ binomial ( 1 , p ) </code></pre>
 
@@ -50,7 +50,7 @@ Precisely, our model, according to our aim stated above, looks like this:
   VR ~ to be determined
   Count ~ to be determined
  </code></pre>
-# Priors
+## Priors
 We need to determine the priors for our predictor variables of the model. We will start with a simple intercept model using binomial distribution and do prior checks.
 <pre><code>
 #Let's use the flat prior, setting  a ~ dnorm( 0 , 10 )
@@ -90,7 +90,7 @@ dens(p, adj=0.1,main = 'Prior: dnorm(0,1)')
 </code></pre>
 Seems better for binomial intercept - dnorm(0,1). We will use that for upcoming models. We will add the remaining predictors to the model and for them we will use dnorm (0,0.5). Furthermore, instead of **quap**, we will turn to our new friend **Hamiltonian Monte Carlo** to approximate the posterior.
 ![Prior Check -2](/images/m1.1-prior-check.png)
-# Models
+## Models
 Let's prepare our data list:
 <pre><code>
 #We will first standardize SBC and SVR.
@@ -117,7 +117,7 @@ m1.3 <- ulam(
   ) , data=dat_list , chains=4 , log_lik=TRUE)
 </code></pre>
 
-# Posterior Results
+## Posterior Results
 Check diagnostics.
 <pre><code>
 precis( m1.3 , depth=2 )
@@ -190,6 +190,8 @@ str(d)
  $ BC        : int  1 2 1 3 1 1 1 1 1 1 ...
  $ Resolution: int  1 1 1 1 1 1 1 1 1 1 ...
 </code> </pre>
+We have one new variable, Submitter Recent Bug Count (SBC); this indicates how active is bug submitter is in the community (i.e., how many bug reports have been submitted by a particular submitter in the last 90 days). Software systems evolve rapidly. Thus inactive people are likely to submit invalid bug reports. We did not use that feature for CSS because, in CSS, people keep themselves updated. Thus, unlikely to have any effect.
+
 ### Material Used
 
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
