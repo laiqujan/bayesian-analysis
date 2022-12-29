@@ -73,7 +73,7 @@ dens(p, adj=0.1, main = 'Prior: dnorm(0,10)')
 As shown in the figure below, the chosen prior is not good; the model assumes that either event always happens or never happens before it sees the data.
 ![Prior Check -1](/images/m1.0-prior-check.png)
 
-#Let's model with something that makes sense dnorm(0,1)
+Let's model with something that makes sense dnorm(0,1)
 <pre><code>
  m1.1 <- quap(
   alist(
@@ -104,7 +104,7 @@ dat_list <- list(
   CW = d$CW,
   BC = d$BC) 
 </code></pre>
-#Time for Markov, we call it using ulam
+Time for Markov, we call it using ulam
 <pre><code>
 m1.3 <- ulam(
   alist(
@@ -159,7 +159,7 @@ VR     1.09 0.06  0.99  1.19  2196     1
 Count -0.12 0.06 -0.21 -0.03  2155     1
 </code></pre>
 
-The values of n_eff and Rhat seem okay. Let's check Trankplots and Traceplots.
+The values of n_eff and Rhat seem well, meaning the model is also okay. However, we will also check Trankplots and Traceplots.
 
 <pre><code>
 #trankplots
