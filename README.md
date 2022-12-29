@@ -195,25 +195,26 @@ We have one new variable, Submitter Recent Bug Count (SBC); this indicates how a
 ## Models
 Let's prepare our data list:
 <pre><code>
-#We will first standardize SBC and SVR.
+#We will first standardize SBC, SRBC, and SVR.
 d$SBC<-standardize(d$SBC)
+d$SRBC<-standardize(d$SRBC)
 d$SVR<-standardize(d$SVR)
 #Creating data list
 dat_list <- list(
   Resolution = d$Resolution,
   SVR = d$SVR,
   SBC = d$SBC,
-  CW = d$CW,
+  SRBC = d$SRBC,
   BC = d$BC) 
 </code></pre>
 Time for Markov, we call it using ulam
 <pre><code>
-m1.3 <- ulam(
+m1.4 <- ulam(
   alist(
     Resolution ~ dbinom( 1 , p ) ,
-    logit(p) <- a[CW] + b[BC] + VR*SVR+ Count*SBC,
-    a[CW] ~ dnorm( 0 , 1),
-    b[BC] ~ dnorm( 0 , 0.5),
+    logit(p) <- a[BC] + VR*SVR + Count*SBC + RCount*SRBC,
+    a[BC] ~ dnorm( 0 , 1),
+    RCount ~ dnorm( 0 , 0.5),
     VR ~ dnorm( 0 , 0.5),
     Count ~ dnorm( 0 , 0.5)
   ) , data=dat_list , chains=4 , log_lik=TRUE)
@@ -222,7 +223,7 @@ m1.3 <- ulam(
 ## Posterior Results
 Check diagnostics.
 <pre><code>
-precis( m1.3 , depth=2 )
+precis( m1.4 , depth=2 )
        mean   sd  5.5% 94.5% n_eff Rhat4
 a[1]   0.83 0.22  0.47  1.17   293  1.02
 a[2]   1.05 0.22  0.69  1.38   341  1.02
