@@ -179,6 +179,16 @@ The graph indicates that V4 and V3 are more likely to produce valid bug reports,
 # Open-source Data
 We will apply the same model and process to open-source data to see how it performs. The proportion of invalid bug reports is generally higher in open-source systems, and the quality of bug reports is lower compared to closed-source systems.
 
+#Loading Data
+d<-read.csv("../oss.csv")
+str(d)
+'data.frame':	5601 obs. of  5 variables:
+ $ SVR       : num  0.844 0.783 0.927 0.776 0.534 ...
+ $ SBC       : int  1479 1168 382 1786 480 1843 0 0 0 141 ...
+ $ SRBC      : int  50 36 26 41 36 123 0 0 0 82 ...
+ $ BC        : int  1 2 1 3 1 1 1 1 1 1 ...
+ $ Resolution: int  1 1 1 1 1 1 1 1 1 1 ...
+</code> </pre>
 ### Material Used
 
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
