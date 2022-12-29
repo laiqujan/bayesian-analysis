@@ -252,14 +252,14 @@ post_b <- inv_logit( post$b)
 plot( precis( as.data.frame(post_b) ))
 </code></pre>
 The graph indicates that V4 and V3 are more likely to produce valid bug reports, while treatment V2 is slightly less favorable for valid bug reports. The default treatment V1 (which means no factor was identified in the bug report) is more favorable for valid bug reports. As mentioned earlier, it may not be possible to determine the relationship between the factors mentioned and the bug report validity by calculating them from the report text, as people often do not follow bug writing guidelines. 
-![BC Plot](/images/precis-plot-for-bcm1.4)
+![BC Plot](/images/precis-plot-for-bcm1.4.png)
 
 Let's plot remaining SVR, SBC, and RBC.
 <pre><code>
 #Plot model precis 
 plot( precis(m1.4))
 </code></pre>
-![Precis Plot](/images/precis-plot-for-bcm1.4)
+![Precis Plot](/images/precis-plot-for-m1.4.png)
 # Material Used
 
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
