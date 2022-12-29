@@ -162,10 +162,10 @@ post <- extract.samples(m1.3)
 post_a <- inv_logit( post$a)
 plot( precis( as.data.frame(post_a) ))
 </code></pre>
-![Prior Check -2](/images/precis-plot-for-cw.png)
-
 The graph demonstrates that V5, V10, and V11 tend to be associated with valid bug reports, while V13, V8, and V3 are slightly more likely to produce 
 invalid bug reports.
+
+![Prior Check -2](/images/precis-plot-for-cw.png)
 
 Let's plot BC - bug completeness/quality.
 <pre><code>
@@ -173,9 +173,8 @@ post <- extract.samples(m1.3)
 post_b <- inv_logit( post$b)
 plot( precis( as.data.frame(post_b) ))
 </code></pre>
-![Prior Check -2](/images/precis-plot-for-bc.png)
-
 The graph indicates that V4 and V3 are more likely to produce valid bug reports, while treatment V2 is slightly less favorable for valid bug reports. The default treatment V1 (which means no factor was identified in the bug report) is more favorable for valid bug reports. As mentioned earlier, it may not be possible to determine the relationship between the factors mentioned and the bug report validity by calculating them from the report text, as people often do not follow bug writing guidelines. 
+![Prior Check -2](/images/precis-plot-for-bc.png)
 
 # Sanity check of the posterior
 We will use the built-in function **postcheck** for a sanity check.
