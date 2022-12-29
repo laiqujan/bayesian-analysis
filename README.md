@@ -164,7 +164,8 @@ plot( precis( as.data.frame(post_a) ))
 </code></pre>
 ![Prior Check -2](/images/precis-plot-for-cw.png)
 
-In the Figure, we can see that XYZ level tends to produce valid bug reports. Likewise, the TT level produces invalid bug reports.
+The graph demonstrates that V5, V10, and V11 tend to be associated with valid bug reports, while V13, V8, and V3 are slightly more likely to produce 
+invalid bug reports.
 
 Let's plot BC - bug completeness/quality.
 <pre><code>
