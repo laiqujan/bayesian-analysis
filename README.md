@@ -192,7 +192,92 @@ str(d)
 </code> </pre>
 We have one new variable, Submitter Recent Bug Count (SBC); this indicates how active is bug submitter is in the community (i.e., how many bug reports have been submitted by a particular submitter in the last 90 days). Software systems evolve rapidly. Thus inactive people are likely to submit invalid bug reports. We did not use that feature for CSS because, in CSS, people keep themselves updated. Thus, unlikely to have any effect.
 
-### Material Used
+## Models
+Let's prepare our data list:
+<pre><code>
+#We will first standardize SBC and SVR.
+d$SBC<-standardize(d$SBC)
+d$SVR<-standardize(d$SVR)
+#Creating data list
+dat_list <- list(
+  Resolution = d$Resolution,
+  SVR = d$SVR,
+  SBC = d$SBC,
+  CW = d$CW,
+  BC = d$BC) 
+</code></pre>
+Time for Markov, we call it using ulam
+<pre><code>
+m1.3 <- ulam(
+  alist(
+    Resolution ~ dbinom( 1 , p ) ,
+    logit(p) <- a[CW] + b[BC] + VR*SVR+ Count*SBC,
+    a[CW] ~ dnorm( 0 , 1),
+    b[BC] ~ dnorm( 0 , 0.5),
+    VR ~ dnorm( 0 , 0.5),
+    Count ~ dnorm( 0 , 0.5)
+  ) , data=dat_list , chains=4 , log_lik=TRUE)
+</code></pre>
+
+## Posterior Results
+Check diagnostics.
+<pre><code>
+precis( m1.3 , depth=2 )
+       mean   sd  5.5% 94.5% n_eff Rhat4
+a[1]   0.83 0.22  0.47  1.17   293  1.02
+a[2]   1.05 0.22  0.69  1.38   341  1.02
+a[3]   0.69 0.67 -0.37  1.75  2001  1.00
+a[4]   1.13 0.27  0.70  1.56   448  1.01
+a[5]   1.29 0.70  0.25  2.44  1954  1.00
+a[6]   0.70 0.82 -0.52  2.05  1707  1.00
+a[7]   0.82 0.24  0.43  1.21   414  1.01
+a[8]   0.52 0.67 -0.54  1.60  2163  1.00
+a[9]   1.11 0.75 -0.03  2.37  2109  1.00
+a[10]  1.71 0.52  0.90  2.55  1247  1.01
+a[11]  1.15 0.42  0.51  1.85   830  1.01
+a[12]  0.92 0.23  0.53  1.29   468  1.01
+a[13]  0.72 0.29  0.26  1.19   542  1.01
+a[14]  0.95 0.77 -0.23  2.23  2049  1.00
+b[1]   0.98 0.21  0.64  1.32   302  1.02
+b[2]   0.75 0.21  0.42  1.09   317  1.02
+b[3]   0.89 0.23  0.54  1.25   397  1.02
+b[4]   0.88 0.30  0.40  1.37   758  1.01
+VR     1.08 0.06  0.98  1.18  2066  1.00
+Count -0.12 0.06 -0.21 -0.03  1789  1.00 
+</code></pre>
+
+The values of "n_eff" and "Rhat" appear to be normal, indicating that the model is likely performing well. However, we will also check TRACE RANK PLOT, or TRANK PLOT. Additionally, we will need to put more effort into interpreting the "precis" results. We will revisit this after examining "Trankplots" and "Traceplots".
+
+</code></pre>
+<pre><code>
+#Traceplots
+traceplot(1.3)
+</code></pre>
+![TrankPlot](/images/trankplot1.3v1.png)
+
+Let's extract posteriors and plot:
+
+Plot CW - caught where is a place or testing level where a bug was detected.
+
+<pre><code>
+post <- extract.samples(m1.3)
+post_a <- inv_logit( post$a)
+plot( precis( as.data.frame(post_a) ))
+</code></pre>
+The graph demonstrates that V5, V10, and V11 tend to be associated with valid bug reports, while V13, V8, and V3 are slightly more likely to produce 
+invalid bug reports.
+
+![Prior Check -2](/images/precis-plot-for-cw.png)
+
+Let's plot BC - bug completeness/quality.
+<pre><code>
+post <- extract.samples(m1.3)
+post_b <- inv_logit( post$b)
+plot( precis( as.data.frame(post_b) ))
+</code></pre>
+The graph indicates that V4 and V3 are more likely to produce valid bug reports, while treatment V2 is slightly less favorable for valid bug reports. The default treatment V1 (which means no factor was identified in the bug report) is more favorable for valid bug reports. As mentioned earlier, it may not be possible to determine the relationship between the factors mentioned and the bug report validity by calculating them from the report text, as people often do not follow bug writing guidelines. 
+![Prior Check -2](/images/precis-plot-for-bc.png)
+# Material Used
 
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
 2. https://www.youtube.com/@rmcelreath
