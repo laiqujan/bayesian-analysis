@@ -117,7 +117,7 @@ m1.3 <- ulam(
   ) , data=dat_list , chains=4 , log_lik=TRUE)
 </code></pre>
 
-## Posterior Results:
+# Posterior Results
 Check diagnostics.
 <pre><code>
 precis( m1.3 , depth=2 )
@@ -175,7 +175,7 @@ plot( precis( as.data.frame(post_b) ))
 </code></pre>
 ![Prior Check -2](/images/precis-plot-for-bc.png)
 
-In the figure, we can see that bug completeness results are opposite to what we were expecting. The default treatment V1 means no factor was found in the bug report, but the results favor valid instead of invalid bug reports. V1 to V4 results seem okay. As I said in this start, it may not be possible to reveal the relationship by calculating the factors mentioned earlier from the bug report.
+The graph indicates that V4 and V3 are more likely to produce valid bug reports, while treatment V2 is slightly less favorable for valid bug reports. The default treatment V1 (which means no factor was identified in the bug report) is more favorable for valid bug reports. As mentioned earlier, it may not be possible to determine the relationship between the factors mentioned and the bug report validity by calculating them from the report text, as people often do not follow bug writing guidelines. 
 
 # Sanity check of the posterior
 We will use the built-in function **postcheck** for a sanity check.
