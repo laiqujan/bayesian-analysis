@@ -165,7 +165,7 @@ plot( precis( as.data.frame(post_a) ))
 The graph demonstrates that V5, V10, and V11 tend to be associated with valid bug reports, while V13, V8, and V3 are slightly more likely to produce 
 invalid bug reports.
 
-![Prior Check -2](/images/precis-plot-for-cw.png)
+![CW Plot](/images/precis-plot-for-cw.png)
 
 Let's plot BC - bug completeness/quality.
 <pre><code>
@@ -174,7 +174,7 @@ post_b <- inv_logit( post$b)
 plot( precis( as.data.frame(post_b) ))
 </code></pre>
 The graph indicates that V4 and V3 are more likely to produce valid bug reports, while treatment V2 is slightly less favorable for valid bug reports. The default treatment V1 (which means no factor was identified in the bug report) is more favorable for valid bug reports. As mentioned earlier, it may not be possible to determine the relationship between the factors mentioned and the bug report validity by calculating them from the report text, as people often do not follow bug writing guidelines. 
-![Prior Check -2](/images/precis-plot-for-bc.png)
+![BC Plot](/images/precis-plot-for-bc.png)
 
 # Open-source Data
 We will apply the same model and process to open-source data to see how it performs. The proportion of invalid bug reports is generally higher in open-source systems, and the quality of bug reports is lower compared to closed-source systems.
@@ -224,27 +224,14 @@ m1.4 <- ulam(
 Check diagnostics.
 <pre><code>
 precis( m1.4 , depth=2 )
-       mean   sd  5.5% 94.5% n_eff Rhat4
-a[1]   0.83 0.22  0.47  1.17   293  1.02
-a[2]   1.05 0.22  0.69  1.38   341  1.02
-a[3]   0.69 0.67 -0.37  1.75  2001  1.00
-a[4]   1.13 0.27  0.70  1.56   448  1.01
-a[5]   1.29 0.70  0.25  2.44  1954  1.00
-a[6]   0.70 0.82 -0.52  2.05  1707  1.00
-a[7]   0.82 0.24  0.43  1.21   414  1.01
-a[8]   0.52 0.67 -0.54  1.60  2163  1.00
-a[9]   1.11 0.75 -0.03  2.37  2109  1.00
-a[10]  1.71 0.52  0.90  2.55  1247  1.01
-a[11]  1.15 0.42  0.51  1.85   830  1.01
-a[12]  0.92 0.23  0.53  1.29   468  1.01
-a[13]  0.72 0.29  0.26  1.19   542  1.01
-a[14]  0.95 0.77 -0.23  2.23  2049  1.00
-b[1]   0.98 0.21  0.64  1.32   302  1.02
-b[2]   0.75 0.21  0.42  1.09   317  1.02
-b[3]   0.89 0.23  0.54  1.25   397  1.02
-b[4]   0.88 0.30  0.40  1.37   758  1.01
-VR     1.08 0.06  0.98  1.18  2066  1.00
-Count -0.12 0.06 -0.21 -0.03  1789  1.00 
+        mean   sd  5.5% 94.5% n_eff Rhat4
+a[1]    0.63 0.04  0.57  0.70  2595     1
+a[2]    0.61 0.05  0.54  0.69  2482     1
+a[3]    0.68 0.14  0.46  0.92  2476     1
+a[4]    1.49 0.62  0.51  2.50  2760     1
+RCount  0.05 0.05 -0.04  0.13  1880     1
+VR      0.77 0.03  0.72  0.82  2548     1
+Count  -0.09 0.05 -0.18 -0.01  1829     1
 </code></pre>
 
 The values of "n_eff" and "Rhat" appear to be normal, indicating that the model is likely performing well. However, we will also check TRACE RANK PLOT, or TRANK PLOT. Additionally, we will need to put more effort into interpreting the "precis" results. We will revisit this after examining "Trankplots" and "Traceplots".
@@ -258,26 +245,21 @@ traceplot(1.3)
 
 Let's extract posteriors and plot:
 
-Plot CW - caught where is a place or testing level where a bug was detected.
-
-<pre><code>
-post <- extract.samples(m1.3)
-post_a <- inv_logit( post$a)
-plot( precis( as.data.frame(post_a) ))
-</code></pre>
-The graph demonstrates that V5, V10, and V11 tend to be associated with valid bug reports, while V13, V8, and V3 are slightly more likely to produce 
-invalid bug reports.
-
-![Prior Check -2](/images/precis-plot-for-cw.png)
-
 Let's plot BC - bug completeness/quality.
 <pre><code>
-post <- extract.samples(m1.3)
+post <- extract.samples(m1.4)
 post_b <- inv_logit( post$b)
 plot( precis( as.data.frame(post_b) ))
 </code></pre>
 The graph indicates that V4 and V3 are more likely to produce valid bug reports, while treatment V2 is slightly less favorable for valid bug reports. The default treatment V1 (which means no factor was identified in the bug report) is more favorable for valid bug reports. As mentioned earlier, it may not be possible to determine the relationship between the factors mentioned and the bug report validity by calculating them from the report text, as people often do not follow bug writing guidelines. 
-![Prior Check -2](/images/precis-plot-for-bc.png)
+![BC Plot](/images/precis-plot-for-bcm1.4)
+
+Let's plot remaining SVR, SBC, and RBC.
+<pre><code>
+#Plot model precis 
+plot( precis(m1.4))
+</code></pre>
+![Precis Plot](/images/precis-plot-for-bcm1.4)
 # Material Used
 
 1. Book: Statistical Rethinking : A Bayesian Course with Examples in R and STAN By Richard McElreath, https://doi.org/10.1201/9780429029608
