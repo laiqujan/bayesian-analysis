@@ -159,7 +159,7 @@ VR     1.09 0.06  0.99  1.19  2196     1
 Count -0.12 0.06 -0.21 -0.03  2155     1
 </code></pre>
 
-The values of n_eff and Rhat seem well, meaning the model is also okay. However, we will also check Trankplots and Traceplots.
+The values of "n_eff" and "Rhat" appear to be normal, indicating that the model is likely performing well. However, we will also check "Trankplots" and "Traceplots" to be sure. Additionally, we will need to put more effort into interpreting the "precis" results. We will revisit this after examining "Trankplots" and "Traceplots".
 
 <pre><code>
 #trankplots
