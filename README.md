@@ -21,7 +21,7 @@ In general, having a complete and detailed bug report can help determine whether
 
 5. **Resolution:** The resolution label of each bug report, i.e., valid or invalid. This is our outcome and dependent variable influenced by the rest.
 
-# CSS Data
+# Closed-source Data
 <pre><code>
 #Loading Data
 d<-read.csv("../css.csv")
@@ -176,13 +176,8 @@ plot( precis( as.data.frame(post_b) ))
 The graph indicates that V4 and V3 are more likely to produce valid bug reports, while treatment V2 is slightly less favorable for valid bug reports. The default treatment V1 (which means no factor was identified in the bug report) is more favorable for valid bug reports. As mentioned earlier, it may not be possible to determine the relationship between the factors mentioned and the bug report validity by calculating them from the report text, as people often do not follow bug writing guidelines. 
 ![Prior Check -2](/images/precis-plot-for-bc.png)
 
-# Sanity check of the posterior
-We will use the built-in function **postcheck** for a sanity check.
-
-<pre><code>
-#Sanity check of the posterior
-postcheck(m1.3, window = 20)
-</code></pre>
+# Open-source Data
+We will apply the same model and process to open-source data to see how it performs. The proportion of invalid bug reports is generally higher in open-source systems, and the quality of bug reports is lower compared to closed-source systems.
 
 ### Material Used
 
