@@ -251,7 +251,7 @@ post <- extract.samples(m1.4)
 post_b <- inv_logit( post$b)
 plot( precis( as.data.frame(post_b) ))
 </code></pre>
-The graph indicates that V4 and V3 are more likely to produce valid bug reports, while treatment V2 is slightly less favorable for valid bug reports. The default treatment V1 (which means no factor was identified in the bug report) is more favorable for valid bug reports. As mentioned earlier, it may not be possible to determine the relationship between the factors mentioned and the bug report validity by calculating them from the report text, as people often do not follow bug writing guidelines. 
+The graph indicates that the presence of weighted factors does produce/favors valid bug reports. 
 ![BC Plot](/images/precis-plot-for-bcm1.4.png)
 
 Let's plot remaining SVR, SBC, and RBC.
@@ -259,6 +259,7 @@ Let's plot remaining SVR, SBC, and RBC.
 #Plot model precis 
 plot( precis(m1.4))
 </code></pre>
+As shown in the figure, the submitter validity rate significantly affects the validity of bug reports, i.e., people with a high validity rate are likely to submit valid bug reports.
 ![Precis Plot](/images/precis-plot-for-m1.4.png)
 # Material Used
 
