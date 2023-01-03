@@ -239,9 +239,9 @@ The values of "n_eff" and "Rhat" appear to be normal, indicating that the model 
 </code></pre>
 <pre><code>
 #Traceplots
-traceplot(1.3)
+traceplot(m1.4)
 </code></pre>
-![TrankPlot](/images/trankplot1.3v1.png)
+![TrankPlot](/images/trankplot1.4v1.png)
 
 Let's extract posteriors and plot:
 
