@@ -144,12 +144,12 @@ VR     1.08 0.06  0.98  1.18  2066  1.00
 Count -0.12 0.06 -0.21 -0.03  1789  1.00 
 </code></pre>
 
-The values of "n_eff" and "Rhat" appear to be normal, indicating that the model is likely performing well. However, we will also check TRACE RANK PLOT, or TRANK PLOT. Additionally, we will need to put more effort into interpreting the "precis" results. We will revisit this after examining "Trankplots" and "Traceplots".
+The values of "n_eff" and "Rhat" appear to be normal, indicating that the model is likely performing well. However, we will also check TRACE RANK PLOT, or TRANK PLOT. Additionally, we will need to put more effort into interpreting the "precis" results. We will revisit this after examining "Trankplots".
 
 </code></pre>
 <pre><code>
 #Traceplots
-traceplot(1.3)
+trankplot(m1.3)
 </code></pre>
 ![TrankPlot](/images/trankplot1.3v1.png)
 
@@ -234,12 +234,12 @@ VR      0.77 0.03  0.72  0.82  2548     1
 Count  -0.09 0.05 -0.18 -0.01  1829     1
 </code></pre>
 
-The values of "n_eff" and "Rhat" appear to be normal, indicating that the model is likely performing well. However, we will also check TRACE RANK PLOT, or TRANK PLOT. Additionally, we will need to put more effort into interpreting the "precis" results. We will revisit this after examining "Trankplots" and "Traceplots".
+The values of "n_eff" and "Rhat" appear to be normal, indicating that the model is likely performing well. However, we will also check TRACE RANK PLOT, or TRANK PLOT. Additionally, we will need to put more effort into interpreting the "precis" results. We will revisit this after examining "Trankplots".
 
 </code></pre>
 <pre><code>
-#Traceplots
-traceplot(m1.4)
+#Trankplots
+trankplot(m1.4)
 </code></pre>
 ![TrankPlot](/images/trankplot1.4v1.png)
 
